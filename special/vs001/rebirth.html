@@ -251,6 +251,63 @@
             background: white;
             border-top: 5px solid var(--deep-purple);
         }
+        /* --- クレジットセクション --- */
+        .credit-container {
+            max-width: 600px;
+            margin: 0 auto 3rem;
+            padding: 1.5rem;
+        }
+
+        .credit-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.8rem 0;
+            border-bottom: 2px dashed var(--pastel-pink);
+        }
+
+        .credit-row:last-child {
+            border-bottom: none;
+        }
+
+        .credit-role {
+            font-size: 0.9rem;
+            color: var(--pastel-purple);
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .credit-name {
+            font-size: 1.1rem;
+        }
+
+        .credit-name a {
+            color: var(--deep-purple);
+            text-decoration: none;
+            position: relative;
+            padding: 0 5px;
+            z-index: 1;
+        }
+
+        /* リンクにマウスを乗せた時にパステルシアンの蛍光ペン風の線が出る */
+        .credit-name a::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 8px;
+            background: var(--pastel-cyan);
+            z-index: -1;
+            transform: scaleX(0);
+            transition: transform 0.2s;
+            transform-origin: left;
+        }
+
+        .credit-name a:hover::before {
+            transform: scaleX(1);
+        }
     </style>
 </head>
 <body>
@@ -336,8 +393,31 @@
     </div>
 
     <div class="section">
-        All Original Music Composed：<a href="https://www16.big.or.jp/~zun/">ZUN</a>
-        Illust：<a href="https://x.com/aksk_AA">墨乃 朱助</a>
+        <h2>CREDIT</h2>
+        <div class="credit-container retro-box">
+            <div class="credit-row">
+                <span class="credit-role">All Original Music Composed</span>
+                <span class="credit-name">
+                    <a href="https://www16.big.or.jp/~zun/" target="_blank">ZUN</a>
+                </span>
+            </div>
+            <div class="credit-row">
+                <span class="credit-role">Illustration</span>
+                <span class="credit-name">
+                    <a href="https://x.com/aksk_AA" target="_blank">墨乃 朱助</a>
+                </span>
+            </div>
+            <div class="credit-row">
+                <span class="credit-role">circle</span>
+                <span class="credit-name">
+                    <a href="https://x.com/v4nshark" target="_blank">V4N SHARK</a>
+                </span>
+            </div>
+            <div class="credit-row">
+                <span class="credit-role">Special Thanks</span>
+                <span class="credit-name">And You!</span>
+            </div>
+        </div>
     </div>
 </div>
 
