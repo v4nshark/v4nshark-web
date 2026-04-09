@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>V4N SHARK Official Web</title>
+    <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --pastel-pink: #ffb7ff;
+            --pastel-purple: #d1b3ff;
+            --deep-purple: #4a1d7a;
+            --bg-color: #ffeaff;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            /* 90年代風の走査線のような薄いストライプ背景 */
+            background-image: linear-gradient(0deg, transparent 24%, rgba(255, 255, 255, .5) 25%, rgba(255, 255, 255, .5) 26%, transparent 27%, transparent 74%, rgba(255, 255, 255, .5) 75%, rgba(255, 255, 255, .5) 76%, transparent 77%, transparent);
+            background-size: 50px 4px;
+            font-family: 'M PLUS Rounded 1c', sans-serif;
+            margin: 0;
+            color: var(--deep-purple);
+        }
+
+        header {
+            text-align: center;
+            padding: 3rem 1rem;
+            background: linear-gradient(180deg, var(--pastel-pink), var(--pastel-purple));
+            border-bottom: 5px solid white;
+            box-shadow: 0 4px 0 var(--pastel-purple);
+        }
+        /* ロゴ画像の配置設定 */
+        .logo-image {
+            max-width: 80%; /* 画面幅に合わせてロゴを縮小 */
+            height: auto; /* アスペクト比を維持 */
+            filter: drop-shadow(4px 4px 0px rgba(106, 46, 154, 0.5)); /* ロゴに紫色の影をつける（レトロ感アップ） */
+            position: relative;
+            z-index: 10; /* 星の上に表示させる */
+        }
+
+        h1 {
+            font-size: 3rem;
+            color: white;
+            text-shadow: 4px 4px 0px var(--deep-purple);
+            margin: 0;
+            letter-spacing: 2px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .section-title {
+            background: white;
+            display: inline-block;
+            padding: 0.2rem 1rem;
+            transform: skewX(-10deg);
+            border: 3px solid var(--deep-purple);
+            margin-bottom: 2rem;
+        }
+
+        /* ディスコグラフィー部分：ここにCDを追加していく */
+        .discography {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .cd-card {
+            background: white;
+            border: 4px solid var(--deep-purple);
+            padding: 1rem;
+            text-align: center;
+            transition: transform 0.2s;
+            box-shadow: 8px 8px 0px var(--pastel-purple);
+        }
+
+        .cd-card:hover {
+            transform: translate(-4px, -4px);
+            box-shadow: 12px 12px 0px var(--pastel-pink);
+        }
+
+        .cd-jacket {
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            background: #eee;
+            margin-bottom: 1rem;
+            border: 2px solid var(--deep-purple);
+            object-fit: cover;
+        }
+
+        .cd-title {
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .btn-link {
+            text-decoration: none;
+            color: var(--deep-purple);
+            font-size: 0.9rem;
+            border: 2px solid var(--deep-purple);
+            padding: 0.3rem 1rem;
+            display: inline-block;
+            margin-top: 0.5rem;
+        }
+
+        footer {
+            text-align: center;
+            padding: 3rem;
+            font-size: 0.8rem;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1> <img src="img/icon_and_vanshark_violet.png" class="logo-image" ></h1>
+    <p>ほうじ茶割</p>
+</header>
+
+<div class="container">
+    <div class="section-title">activity</div>
+    
+    <div class="discography">
+        <!-- cdや情報公開時に増やす -->
+        <div class="cd-card">
+            <a href="special/vs001/rebirth.html"> <img src="special/vs001/jacket.jpg" alt="Album Title" class="cd-jacket">
+            </a>
+            <div class="cd-title">Rebirth</div>
+            <p style="font-size: 0.8rem;">2026.05.04 博麗神社例大祭23 Release</p>
+            <a href="special/vs001/rebirth.html" class="btn-link">ENTER SPECIAL SITE</a>
+        </div>
+        
+        <div class="cd-card" style="opacity: 0.6;">
+            <div class="cd-jacket" style="display: flex; align-items: center; justify-content: center;">Coming Soon</div>
+            <div class="cd-title">Next Release...</div>
+        </div>
+    </div>
+</div>
+
+<footer>
+    &copy; 2026 V4N SHARK.
+</footer>
+
+</body>
+</html>

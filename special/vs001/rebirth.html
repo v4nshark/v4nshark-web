@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CDタイトル（仮） | V4N SHARK 特設サイト</title>
+    <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --pastel-pink: #ffb7ff;
+            --pastel-purple: #cda8ff;
+            --pastel-cyan: #8ce1ff; /* 90s風の差し色（水色） */
+            --deep-purple: #4a1d7a;
+            --bg-color: #fff0ff;
+        }
+
+        body {
+            /* 90年代風のポップなドット（網点）背景 */
+            background-color: var(--bg-color);
+            background-image: radial-gradient(var(--pastel-pink) 15%, transparent 16%),
+                              radial-gradient(var(--pastel-pink) 15%, transparent 16%);
+            background-size: 20px 20px;
+            background-position: 0 0, 10px 10px;
+            font-family: 'M PLUS Rounded 1c', sans-serif;
+            margin: 0;
+            color: var(--deep-purple);
+            line-height: 1.6;
+        }
+
+        /* 共通の「アニメのUI」風スタイル */
+        .retro-box {
+            background: white;
+            border: 4px solid var(--deep-purple);
+            box-shadow: 8px 8px 0px var(--pastel-purple);
+        }
+
+        /* ヘッダー・ナビ */
+        nav {
+            padding: 1rem;
+            text-align: center;
+        }
+        nav a {
+            display: inline-block;
+            background: white;
+            color: var(--deep-purple);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: bold;
+            padding: 0.5rem 1.5rem;
+            border: 3px solid var(--deep-purple);
+            box-shadow: 4px 4px 0px var(--pastel-cyan);
+            border-radius: 20px; /* カプセル状のボタンでレトロフューチャー感を */
+            transition: all 0.2s;
+        }
+        nav a:hover {
+            transform: translate(2px, 2px);
+            box-shadow: 2px 2px 0px var(--pastel-cyan);
+        }
+
+        /* メインコンテナ（画面中央の白い領域） */
+        .wrapper {
+            max-width: 900px;
+            margin: 0 auto 3rem;
+            padding: 2rem;
+            background: white;
+            border: 5px solid var(--deep-purple);
+            box-shadow: 12px 12px 0px var(--pastel-purple), 
+                        24px 24px 0px var(--pastel-cyan); /* 影を2重にして豪華に */
+        }
+
+        /* --- ヘッダー（CD情報） --- */
+        .main-visual {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            align-items: center;
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 4px dashed var(--pastel-pink);
+        }
+
+        .jacket-img {
+            width: 350px;
+            max-width: 100%;
+            aspect-ratio: 1 / 1;
+            object-fit: cover;
+            border: 4px solid var(--deep-purple);
+            box-shadow: 6px 6px 0px var(--pastel-cyan);
+        }
+
+        .album-info {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .badge {
+            display: inline-block;
+            background: var(--pastel-cyan);
+            color: var(--deep-purple);
+            padding: 0.2rem 1rem;
+            border: 2px solid var(--deep-purple);
+            font-weight: 900;
+            letter-spacing: 2px;
+            margin-bottom: 0.5rem;
+            transform: skewX(-10deg);
+        }
+
+        .album-title {
+            font-size: 2.5rem;
+            font-weight: 900;
+            line-height: 1.2;
+            margin: 0 0 1rem 0;
+            text-shadow: 3px 3px 0px var(--pastel-pink);
+        }
+
+        .event-info {
+            font-size: 1.1rem;
+            background: var(--pastel-purple);
+            color: white;
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            border: 2px solid var(--deep-purple);
+            margin-bottom: 1rem;
+            box-shadow: 4px 4px 0px var(--deep-purple);
+        }
+
+        /* --- セクション見出し --- */
+        h2 {
+            font-size: 2rem;
+            text-align: center;
+            letter-spacing: 3px;
+            margin-bottom: 2rem;
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        h2::before {
+            content: '';
+            position: absolute;
+            bottom: 5px;
+            left: -10px;
+            right: -10px;
+            height: 15px;
+            background: var(--pastel-pink);
+            z-index: -1;
+            transform: skewX(-20deg);
+        }
+
+        /* --- トラックリスト --- */
+        .track-list {
+            list-style: none;
+            padding: 0;
+            margin: 0 auto 3rem;
+            max-width: 700px;
+        }
+
+        .track-item {
+            display: flex;
+            align-items: center;
+            padding: 1rem;
+            border-bottom: 3px dotted var(--pastel-purple);
+            transition: background 0.2s;
+        }
+        .track-item:hover {
+            background: #faf4ff;
+        }
+
+        .track-num {
+            font-size: 2rem;
+            font-weight: 900;
+            color: var(--pastel-cyan);
+            text-shadow: 2px 2px 0px var(--deep-purple);
+            margin-right: 1.5rem;
+            width: 40px;
+            text-align: right;
+            font-style: italic;
+        }
+
+        .track-details {
+            flex: 1;
+        }
+
+        .track-name { 
+            font-size: 1.2rem; 
+            font-weight: bold; 
+            display: block;
+        }
+        .original-name { 
+            font-size: 0.85rem; 
+            color: #666; 
+            display: block;
+            margin-top: 0.2rem;
+        }
+        .original-name::before {
+            content: 'Orig. ';
+            color: var(--pastel-purple);
+            font-weight: bold;
+        }
+
+        /* --- YouTube埋め込み --- */
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            margin: 0 auto 3rem;
+            border: 4px solid var(--deep-purple);
+            box-shadow: 8px 8px 0px var(--pastel-purple);
+        }
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* --- 委託販売エリア --- */
+        .shop-area {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .shop-banner {
+            width: 240px;
+            height: 70px;
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 3px solid var(--deep-purple);
+            text-decoration: none;
+            color: var(--deep-purple);
+            font-weight: bold;
+            box-shadow: 5px 5px 0px var(--pastel-pink);
+            transition: all 0.2s;
+        }
+        .shop-banner:hover {
+            transform: translate(2px, 2px);
+            box-shadow: 3px 3px 0px var(--pastel-pink);
+            background: var(--bg-color);
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem 1rem;
+            font-size: 0.8rem;
+            font-weight: bold;
+            background: white;
+            border-top: 5px solid var(--deep-purple);
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <a href="../../v4nshark.html">◀ RETURN TO TOP</a>
+</nav>
+
+<div class="wrapper">
+    <header class="main-visual">
+        <img src="jacket.jpg" alt="CD Jacket" class="jacket-img">
+        
+        <div class="album-info">
+            <h1 class="album-title">Rebirth</h1>
+            <div class="event-info">
+                第23回 博麗神社例大祭 <span style="color: #ffe600; text-shadow: 1px 1px 0px var(--deep-purple);">き03b</span>
+            </div>
+            <p style="font-weight: bold; border-left: 5px solid var(--pastel-cyan); padding-left: 10px;">
+                楽、チル、エモまで 東方バンドヴォーカルアレンジCD
+            </p>
+            <div>会場価格1000YEN</div>
+        </div>
+    </header>
+
+    <div class="section">
+        <h2>CROSSFADE</h2>
+        <div class="video-container">
+            <iframe src="https://www.youtube.com/embed/VIDEO_ID" frameborder="0" allowfullscreen></iframe>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>TRACKLIST</h2>
+        <ul class="track-list">
+            <li class="track-item">
+                <span class="track-num">01</span>
+                <div class="track-details">
+                    <span class="track-name">キャリコ</span>
+                    <span class="original-name">大吉キトゥン</span>
+                </div>
+            </li>
+            <li class="track-item">
+                <span class="track-num">02</span>
+                <div class="track-details">
+                    <span class="track-name">厄満</span>
+                    <span class="original-name">厄神様の通り道 〜 Dark Road</span>
+                </div>
+            </li>
+            <li class="track-item">
+                <span class="track-num">03</span>
+                <div class="track-details">
+                    <span class="track-name">煙星</span>
+                    <span class="original-name">U.N.オーエンは彼女なのか？</span>
+                </div>
+            </li>
+            <li class="track-item">
+                <span class="track-num">04</span>
+                <div class="track-details">
+                    <span class="track-name">邪</span>
+                    <span class="original-name">古きユアンシェン</span>
+                </div>
+            </li>
+            <li class="track-item">
+                <span class="track-num">05</span>
+                <div class="track-details">
+                    <span class="track-name">revolve</span>
+                    <span class="original-name">幻視の夜 ～ Ghostly Eyes / 蠢々秋月 ～ Mooned Insect</span>
+                </div>
+            </li>
+            <li class="track-item">
+                <span class="track-num">06</span>
+                <div class="track-details">
+                    <span class="track-name">metroline</span>
+                    <span class="original-name" style="color: var(--pastel-cyan); font-weight: bold;">Original Composition</span>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <div class="section">
+<!--
+        <h2>SHOP INFO</h2>
+        <div class="shop-area">
+            <a href="#" class="shop-banner">メロンブックス<br>（準備中）</a>
+        </div>
+-->
+
+    </div>
+</div>
+
+<footer>
+    &copy; 2026 V4N SHARK. All Rights Reserved.
+</footer>
+
+</body>
+</html>
